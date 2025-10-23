@@ -31,6 +31,10 @@ const Navbar = () => {
       label: "Reports",
     },
     {
+      href: PROTECTED_ROUTES.USERS,
+      label: "Users",
+    },
+    {
       href: PROTECTED_ROUTES.SETTINGS,
       label: "Settings",
     },
