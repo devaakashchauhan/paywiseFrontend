@@ -7,7 +7,12 @@ import Reports from "@/pages/reports";
 import Settings from "@/pages/settings";
 import Account from "@/pages/settings/account";
 import Appearance from "@/pages/settings/appearance";
-import Users from "@/pages/user";
+import AdminTransactions from "@/pages/adminDashboard/adminTransactions";
+import AdminAnalytics from "@/pages/adminDashboard/adminAnalytics";
+// import AdminSettings from "@/pages/adminDashboard/settings";
+import AdminMainDashboard from "@/pages/adminDashboard/adminDashboard";
+import Admin from "@/pages/adminDashboard";
+import AdminUsers from "@/pages/adminDashboard/adminUsers";
 // import Billing from "@/pages/settings/billing";
 
 export const authenticationRoutePaths = [
@@ -19,9 +24,19 @@ export const protectedRoutePaths = [
   { path: PROTECTED_ROUTES.OVERVIEW, element: <Dashboard /> },
   { path: PROTECTED_ROUTES.TRANSACTIONS, element: <Transactions /> },
   { path: PROTECTED_ROUTES.REPORTS, element: <Reports /> },
-  { path: PROTECTED_ROUTES.USERS, element: <Users /> },
-  { path: PROTECTED_ROUTES.SETTINGS, 
-    element: <Settings /> ,
+  { path: PROTECTED_ROUTES.ADMIN_DASHBOARD, element: <Admin /> ,
+    children: [
+      { index: true, element: <AdminMainDashboard /> },
+      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_USERS, element: <AdminMainDashboard /> },
+      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_USERS, element: <AdminUsers /> },
+      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_TRANSACTIONS, element: <AdminTransactions /> },
+      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_ANALYTICS, element: <AdminAnalytics /> },
+      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_SETTINGS, element: <Account /> },
+      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_APPEARANCE, element: <Appearance /> },
+    ]
+  },
+  { path: PROTECTED_ROUTES.SETTINGS,
+    element: <Settings />,
     children: [
       { index: true, element: <Account /> }, // Default route
       { path: PROTECTED_ROUTES.SETTINGS, element: <Account /> },

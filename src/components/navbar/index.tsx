@@ -31,13 +31,13 @@ const Navbar = () => {
       label: "Reports",
     },
     {
-      href: PROTECTED_ROUTES.USERS,
-      label: "Users",
-    },
-    {
       href: PROTECTED_ROUTES.SETTINGS,
       label: "Settings",
     },
+    {
+      href: PROTECTED_ROUTES.ADMIN_DASHBOARD,
+      label: "Admin Dashboard",
+    }
   ];
 
   return (
