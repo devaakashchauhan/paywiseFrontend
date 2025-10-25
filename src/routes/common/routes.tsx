@@ -12,7 +12,7 @@ import AdminAnalytics from "@/pages/adminDashboard/adminAnalytics";
 // import AdminSettings from "@/pages/adminDashboard/settings";
 import AdminMainDashboard from "@/pages/adminDashboard/adminDashboard";
 import Admin from "@/pages/adminDashboard";
-import AdminUsers from "@/pages/adminDashboard/adminUsers";
+import AdminUsersList from "@/pages/adminDashboard/adminUsers";
 // import Billing from "@/pages/settings/billing";
 
 export const authenticationRoutePaths = [
@@ -27,8 +27,8 @@ export const protectedRoutePaths = [
   { path: PROTECTED_ROUTES.ADMIN_DASHBOARD, element: <Admin /> ,
     children: [
       { index: true, element: <AdminMainDashboard /> },
-      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_USERS, element: <AdminMainDashboard /> },
-      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_USERS, element: <AdminUsers /> },
+      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD, element: <AdminMainDashboard /> },
+      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_USERS, element: <AdminUsersList /> },
       { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_TRANSACTIONS, element: <AdminTransactions /> },
       { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_ANALYTICS, element: <AdminAnalytics /> },
       { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_SETTINGS, element: <Account /> },

@@ -1,9 +1,8 @@
-import React from 'react'
 
-const AdminUsers = () => {
+const AdminUsersList = () => {
   return (
     <div>Users</div>
   )
 }
 
-export default AdminUsers
+export default AdminUsersList
