@@ -4,11 +4,12 @@ import { DateRangeType } from "@/components/date-range-select";
 import DashboardDataChart from "./admin-dashboard-data-chart";
 import { Separator } from "@/components/ui/separator";
 import { RecentTransactions } from "./_components/admin-recent-transactions";
-import { AdminKeyMetrics } from "./_components/admin-key-metrics";
+// import { AdminKeyMetrics } from "./_components/admin-key-metrics";
+import AdminDashboardStats from "./_components/admin-dashboard-stats";
 
 const AdminMainDashboard = () => {
   const [dateRange, _setDateRange] = useState<DateRangeType>(null);
-
+  
   return (
     <div className="space-y-6">
       <div>
@@ -19,8 +20,8 @@ const AdminMainDashboard = () => {
       </div>
       <Separator />
 
-      {/* <DashboardStats dateRange={dateRange} /> */}
-      <AdminKeyMetrics />
+      <AdminDashboardStats dateRange={dateRange} />
+      {/* <AdminKeyMetrics /> */}
       <div className="w-full flex flex-col">
         {/* Dashboard Summary Overview */}
 

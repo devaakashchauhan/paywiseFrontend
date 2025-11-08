@@ -5,6 +5,10 @@ export const isAuthRoute = (pathname: string): boolean => {
   export const AUTH_ROUTES = {
     SIGN_IN: "/",
     SIGN_UP: "/sign-up",
+    ADMIN_SIGN_IN: "/admin-sign-in",
+    FORGOT_PASSWORD: "/forgot-password",
+    OTP_VERIFY: "/verify-otp",
+    RECREATE_PASSWORD: "/recreate-password",
   };
   
   export const PROTECTED_ROUTES = {

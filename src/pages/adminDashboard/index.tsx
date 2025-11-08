@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { PROTECTED_ROUTES } from "@/routes/common/routePath";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { Separator } from "@/components/ui/separator"
+// import { Separator } from "@/components/ui/separator"
 
 interface ItemPropsType {
   items: {
@@ -18,7 +18,7 @@ const Admin = () => {
     { title: "Dashboard", href: PROTECTED_ROUTES.ADMIN_DASHBOARD },
     { title: "Transactions", href: PROTECTED_ROUTES.ADMIN_DASHBOARD_TRANSACTIONS },
     { title: "Users", href: PROTECTED_ROUTES.ADMIN_DASHBOARD_USERS },
-    { title: "Analytics", href: PROTECTED_ROUTES.ADMIN_DASHBOARD_ANALYTICS },
+    // { title: "Analytics", href: PROTECTED_ROUTES.ADMIN_DASHBOARD_ANALYTICS },
     { title: "Appearance", href: PROTECTED_ROUTES.ADMIN_DASHBOARD_APPEARANCE },
     { title: "Account", href: PROTECTED_ROUTES.ADMIN_DASHBOARD_SETTINGS },
   ];

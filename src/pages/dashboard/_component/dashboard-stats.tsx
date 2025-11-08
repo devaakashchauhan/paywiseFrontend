@@ -7,6 +7,7 @@ const DashboardStats = ({ dateRange }: { dateRange?: DateRangeType }) => {
     { preset: dateRange?.value },
     { skip: !dateRange }
   );
+  console.log("Summary Analytics Data:", data);
   const summaryData = data?.data;
 
   return (

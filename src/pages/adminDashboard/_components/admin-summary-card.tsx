@@ -8,7 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import { DateRangeEnum, DateRangeType } from "@/components/date-range-select";
 
-type CardType = "balance" | "income" | "expenses" | "savings";
+type CardType = "balance" | "income" | "expenses" | "savings" | "other";
 type CardStatus = {
   label: string;
   color: string;
@@ -171,21 +171,23 @@ const SummaryCard: FC<SummaryCardProps> = ({
       : formatCurrency(val, {
           isExpense: cardType === "expenses" && val < 0,
           showSign: cardType === "balance" && val < 0,
+          style: cardType === "other" ? "decimal" : "currency",
+          decimalPlaces: cardType === "other" ? 0 : 2,
         });
   };
 
   return (
     <Card className="!border-none !border-0 !gap-0 !bg-white/5">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 !pb-5">
-        <CardTitle className="text-[15px] text-gray-300 font-medium">
+        <CardTitle className="text-[15px]  font-medium">
           {title}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-5">
         <div
           className={cn(
-            "text-4xl font-bold",
-            cardType === "balance" && value < 0 ? "text-red-400" : "text-white"
+            "text-4xl font-bold break-words break-all",
+            cardType === "balance" && value < 0 ? "text-red-400" : ""
           )}
         >
           <CountUp
@@ -195,6 +197,7 @@ const SummaryCard: FC<SummaryCardProps> = ({
             decimals={2}
             decimalPlaces={2}
             formattingFn={formatCountupValue}
+            containerProps={{ style: { display: "inline" } }}
           />
         </div>
 

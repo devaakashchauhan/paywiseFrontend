@@ -16,6 +16,28 @@ export const authApi = apiClient.injectEndpoints({
         body: credentials,
       }),
     }),
+    adminLogin: builder.mutation({
+      query: (credentials) => ({
+        url: "/auth/admin/login",
+        method: "POST",
+        body: credentials,
+      }),
+    }),
+
+    sendOTP: builder.mutation({
+      query: (email) => ({
+        url: "/auth/forgot-password",
+        method: "POST",
+        body: { email },
+      }),
+    }),
+    verifyOTP: builder.mutation({
+      query: ({ email, otp, newPassword }) => ({
+        url: "/auth/verify-otp",
+        method: "POST",
+        body: { email, otp, newPassword },
+      }),
+    }),
 
     //skip
     logout: builder.mutation({
@@ -38,4 +60,7 @@ export const {
   useRegisterMutation,
   useRefreshMutation,
   useLogoutMutation,
+  useAdminLoginMutation,
+  useSendOTPMutation,
+  useVerifyOTPMutation,
 } = authApi;

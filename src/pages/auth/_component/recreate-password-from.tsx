@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
-import { AUTH_ROUTES, PROTECTED_ROUTES } from "@/routes/common/routePath";
+import { AUTH_ROUTES} from "@/routes/common/routePath";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,21 +17,18 @@ import {
 import { toast } from "sonner";
 import { Loader } from "lucide-react";
 import { useLoginMutation } from "@/features/auth/authAPI";
-import { useAppDispatch } from "@/app/hook";
-import { setCredentials } from "@/features/auth/authSlice";
 
 const schema = z.object({
-  email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
+  confirmPassword: z.string().min(6, "Confirm Password must be at least 6 characters"),
 });
 
 type FormValues = z.infer<typeof schema>;
 
-const SignInForm = ({
+const RecreatePasswordForm = ({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"form">) => {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [login, { isLoading }] = useLoginMutation();
 
@@ -42,11 +39,10 @@ const SignInForm = ({
   const onSubmit = (values: FormValues) => {
     login(values)
       .unwrap()
-      .then((data) => {
-        dispatch(setCredentials(data));
+      .then(() => {
         toast.success("Login successful");
         setTimeout(() => {
-          navigate(PROTECTED_ROUTES.OVERVIEW);
+          navigate(AUTH_ROUTES.RECREATE_PASSWORD);
         }, 1000);
       })
       .catch((error) => {
@@ -72,15 +68,12 @@ const SignInForm = ({
           <div className="grid gap-2">
             <FormField
               control={form.control}
-              name="email"
+              name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="!font-normal">Email</FormLabel>
+                  <FormLabel className="!font-normal">Password</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="subscribe2techwithemma@gmail.com"
-                      {...field}
-                    />
+                    <Input placeholder="*******" type="password" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -90,10 +83,10 @@ const SignInForm = ({
           <div className="grid gap-2">
             <FormField
               control={form.control}
-              name="password"
+              name="confirmPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="!font-normal">Password</FormLabel>
+                  <FormLabel className="!font-normal">Confirm Password</FormLabel>
                   <FormControl>
                     <Input placeholder="*******" type="password" {...field} />
                   </FormControl>
@@ -151,4 +144,4 @@ const SignInForm = ({
   );
 };
 
-export default SignInForm;
+export default RecreatePasswordForm;

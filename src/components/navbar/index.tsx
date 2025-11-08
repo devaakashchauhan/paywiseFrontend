@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import Logo from "../logo/logo";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent } from "../ui/sheet";
-import { UserNav } from "./user-nav";
+// import { UserNav } from "./user-nav";
 import LogoutDialog from "./logout-dialog";
 import { useTypedSelector } from "@/app/hook";
 
@@ -16,6 +16,7 @@ const Navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isLogoutDialogOpen, setIsLogoutDialogOpen] = useState(false);
+  const isAdmin = user?.role === 'ADMIN';
 
   const routes = [
     {
@@ -30,15 +31,15 @@ const Navbar = () => {
       href: PROTECTED_ROUTES.REPORTS,
       label: "Reports",
     },
-    {
+    !isAdmin &&{
       href: PROTECTED_ROUTES.SETTINGS,
       label: "Settings",
     },
-    {
+     isAdmin && {
       href: PROTECTED_ROUTES.ADMIN_DASHBOARD,
       label: "Admin Dashboard",
-    }
-  ];
+    },
+  ].filter(Boolean) as { href: string; label: string }[];
 
   return (
     <>
@@ -116,12 +117,13 @@ const Navbar = () => {
 
             {/* {} */}
             {/* Right side - User actions */}
-            <div className="flex items-center space-x-4">
-              <UserNav
+            <div className="flex items-center space-x-4 hover:cursor-pointer hover:text-white text-white/60" onClick={() => setIsLogoutDialogOpen(true)}>
+              {/* <UserNav
                 userName={user?.name || ""}
                 profilePicture={user?.profilePicture || ""}
                 onLogout={() => setIsLogoutDialogOpen(true)}
-              />
+              /> */}
+              Log Out
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/form";
 import { toast } from "sonner";
 import { Loader } from "lucide-react";
-import { useLoginMutation } from "@/features/auth/authAPI";
+import { useAdminLoginMutation } from "@/features/auth/authAPI";
 import { useAppDispatch } from "@/app/hook";
 import { setCredentials } from "@/features/auth/authSlice";
 
@@ -27,20 +27,20 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-const SignInForm = ({
+const AdminSignInForm = ({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"form">) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [login, { isLoading }] = useLoginMutation();
+  const [adminLogin, { isLoading }] = useAdminLoginMutation();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
   });
 
   const onSubmit = (values: FormValues) => {
-    login(values)
+    adminLogin(values)
       .unwrap()
       .then((data) => {
         dispatch(setCredentials(data));
@@ -129,26 +129,10 @@ const SignInForm = ({
           >
             Sign up
           </Link>
-          {" | "}
-           <Link
-            to={AUTH_ROUTES.ADMIN_SIGN_IN}
-            className="underline underline-offset-4"
-          >
-            Admin Sign up
-          </Link>
-          
-        </div>
-        <div className="text-start text-sm">
-          <Link
-            to={AUTH_ROUTES.FORGOT_PASSWORD}
-            className="underline underline-offset-4"
-          >
-            Password Forget
-          </Link>
         </div>
       </form>
     </Form>
   );
 };
 
-export default SignInForm;
+export default AdminSignInForm;

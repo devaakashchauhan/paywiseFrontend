@@ -13,11 +13,21 @@ import AdminAnalytics from "@/pages/adminDashboard/adminAnalytics";
 import AdminMainDashboard from "@/pages/adminDashboard/adminDashboard";
 import Admin from "@/pages/adminDashboard";
 import AdminUsersList from "@/pages/adminDashboard/adminUsers";
+import AdminSignIn from "@/pages/auth/admin-sign-in";
+import PasswordForget from "@/pages/auth/password-forget";
+import RecreatePassword from "@/pages/auth/recreate-password";
+import VerifyOtp from "@/pages/auth/verify-otp";
+import AdminGuard from "@/pages/adminDashboard/_components/guard";
 // import Billing from "@/pages/settings/billing";
 
 export const authenticationRoutePaths = [
   { path: AUTH_ROUTES.SIGN_IN, element: <SignIn /> },
   { path: AUTH_ROUTES.SIGN_UP, element: <SignUp /> },
+  { path: AUTH_ROUTES.ADMIN_SIGN_IN, element: <AdminSignIn /> },
+  { path: AUTH_ROUTES.FORGOT_PASSWORD, element: <PasswordForget /> },
+  { path: AUTH_ROUTES.OTP_VERIFY, element: <VerifyOtp /> },
+  { path: AUTH_ROUTES.RECREATE_PASSWORD, element: <RecreatePassword /> },
+
 ];
 
 export const protectedRoutePaths = [
@@ -26,13 +36,13 @@ export const protectedRoutePaths = [
   { path: PROTECTED_ROUTES.REPORTS, element: <Reports /> },
   { path: PROTECTED_ROUTES.ADMIN_DASHBOARD, element: <Admin /> ,
     children: [
-      { index: true, element: <AdminMainDashboard /> },
-      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD, element: <AdminMainDashboard /> },
-      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_USERS, element: <AdminUsersList /> },
-      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_TRANSACTIONS, element: <AdminTransactions /> },
-      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_ANALYTICS, element: <AdminAnalytics /> },
-      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_SETTINGS, element: <Account /> },
-      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_APPEARANCE, element: <Appearance /> },
+      { index: true, element: <AdminGuard><AdminMainDashboard /></AdminGuard> },
+      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD, element: <AdminGuard><AdminMainDashboard /></AdminGuard> },
+      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_USERS, element: <AdminGuard><AdminUsersList /></AdminGuard> },
+      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_TRANSACTIONS, element: <AdminGuard><AdminTransactions /></AdminGuard> },
+      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_ANALYTICS, element: <AdminGuard><AdminAnalytics /></AdminGuard> },
+      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_SETTINGS, element: <AdminGuard><Account /></AdminGuard> },
+      { path: PROTECTED_ROUTES.ADMIN_DASHBOARD_APPEARANCE, element: <AdminGuard><Appearance /></AdminGuard> },
     ]
   },
   { path: PROTECTED_ROUTES.SETTINGS,
