@@ -27,3 +27,5 @@ _billing.tsx
 
 ### dotenv ###
 .env
+
+package-lock.json
