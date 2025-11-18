@@ -19,7 +19,7 @@ const AdminTransactions = () => {
       <DashboardStats dateRange={dateRange} />
       {/* Dashboard Recent Transactions */}
       <div className="w-full mt-0">
-        <DashboardRecentTransactions />
+        {/* <DashboardRecentTransactions /> */}
       </div>
     </div>
   )

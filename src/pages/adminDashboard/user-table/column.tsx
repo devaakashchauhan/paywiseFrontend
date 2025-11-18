@@ -84,11 +84,11 @@ export const userColumns: ColumnDef<UserType>[] = [
       return <div className="capitalize">{email}</div>;
     },
   },
-  {
-    id: "actions",
-    enableHiding: false,
-    cell: ({ row }) => <ActionsCell row={row} />,
-  },
+  // {
+  //   id: "actions",
+  //   enableHiding: false,
+  //   cell: ({ row }) => <ActionsCell row={row} />,
+  // },
 ];
 
 // eslint-disable-next-line react-refresh/only-export-components
