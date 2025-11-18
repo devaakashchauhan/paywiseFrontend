@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import Logo from "../logo/logo";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent } from "../ui/sheet";
-// import { UserNav } from "./user-nav";
+import { UserNav } from "./user-nav";
 import LogoutDialog from "./logout-dialog";
 import { useTypedSelector } from "@/app/hook";
 
@@ -27,7 +27,7 @@ const Navbar = () => {
       href: PROTECTED_ROUTES.TRANSACTIONS,
       label: "Transactions",
     },
-    {
+    !isAdmin &&{
       href: PROTECTED_ROUTES.REPORTS,
       label: "Reports",
     },
@@ -117,14 +117,14 @@ const Navbar = () => {
 
             {/* {} */}
             {/* Right side - User actions */}
-            <div className="flex items-center space-x-4 hover:cursor-pointer hover:text-white text-white/60" onClick={() => setIsLogoutDialogOpen(true)}>
-              {/* <UserNav
+            {/* <div className="flex items-center space-x-4 hover:cursor-pointer hover:text-white text-white/60" onClick={() => setIsLogoutDialogOpen(true)}> */}
+              <UserNav
                 userName={user?.name || ""}
                 profilePicture={user?.profilePicture || ""}
                 onLogout={() => setIsLogoutDialogOpen(true)}
-              /> */}
-              Log Out
-            </div>
+              />
+              {/* Log Out */}
+            {/* </div> */}
           </div>
         </div>
       </header>

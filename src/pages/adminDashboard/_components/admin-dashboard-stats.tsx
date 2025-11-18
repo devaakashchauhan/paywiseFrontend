@@ -31,7 +31,7 @@ const AdminDashboardStats = ({ dateRange }: { dateRange?: DateRangeType }) => {
           percentageChange={summaryData?.income?.percentageChange}
           dateRange={dateRange}
           isLoading={isFetching}
-          cardType="income"
+          cardType="other"
         />
         <SummaryCard
           title="Total Expenses"
@@ -39,7 +39,7 @@ const AdminDashboardStats = ({ dateRange }: { dateRange?: DateRangeType }) => {
           dateRange={dateRange}
           percentageChange={summaryData?.expense?.percentageChange}
           isLoading={isFetching}
-          cardType="expenses"
+          cardType="other"
         />
       </div>
     </div>

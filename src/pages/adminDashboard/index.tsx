@@ -16,7 +16,7 @@ interface ItemPropsType {
 const Admin = () => {
   const sidebarNavItems = [
     { title: "Dashboard", href: PROTECTED_ROUTES.ADMIN_DASHBOARD },
-    { title: "Transactions", href: PROTECTED_ROUTES.ADMIN_DASHBOARD_TRANSACTIONS },
+    // { title: "Transactions", href: PROTECTED_ROUTES.ADMIN_DASHBOARD_TRANSACTIONS },
     { title: "Users", href: PROTECTED_ROUTES.ADMIN_DASHBOARD_USERS },
     // { title: "Analytics", href: PROTECTED_ROUTES.ADMIN_DASHBOARD_ANALYTICS },
     { title: "Appearance", href: PROTECTED_ROUTES.ADMIN_DASHBOARD_APPEARANCE },

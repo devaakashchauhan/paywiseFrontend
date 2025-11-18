@@ -32,7 +32,7 @@ const AdminMainDashboard = () => {
           </div>
           <div className="lg:col-span-2">
             {/* <ExpensePieChart dateRange={dateRange} /> */}
-            <RecentTransactions />
+            {/* <RecentTransactions /> */}
           </div>
         </div>
       </div>
