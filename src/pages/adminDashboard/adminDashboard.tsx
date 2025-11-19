@@ -3,11 +3,12 @@ import { useState } from "react";
 import { DateRangeType } from "@/components/date-range-select";
 import DashboardDataChart from "./admin-dashboard-data-chart";
 import { Separator } from "@/components/ui/separator";
-import { RecentTransactions } from "./_components/admin-recent-transactions";
+// import { RecentTransactions } from "./_components/admin-recent-transactions";
 // import { AdminKeyMetrics } from "./_components/admin-key-metrics";
 import AdminDashboardStats from "./_components/admin-dashboard-stats";
 
 const AdminMainDashboard = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [dateRange, _setDateRange] = useState<DateRangeType>(null);
   
   return (

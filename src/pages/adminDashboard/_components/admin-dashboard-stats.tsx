@@ -6,13 +6,16 @@ import { DateRangeType } from "@/components/date-range-select";
 const AdminDashboardStats = ({ dateRange }: { dateRange?: DateRangeType }) => {
   const { data, isFetching } = useAdminAnalyticsQuery();
   const summaryData = data?.data;
+
+  const parsePercentage = (val?: string) => (val ? Number(val) : undefined);
+
   return (
     <div className="flex flex-row items-center">
       <div className="flex-1 lg:flex-[1] grid grid-cols-1 lg:grid-cols-4 gap-4">
         <SummaryCard
           title="Total Users"
           value={summaryData?.users?.total}
-          percentageChange={summaryData?.users?.percentageChange}
+          percentageChange={parsePercentage(summaryData?.users?.percentageChange)}
           dateRange={dateRange}
           isLoading={isFetching}
           cardType="other"
@@ -20,7 +23,7 @@ const AdminDashboardStats = ({ dateRange }: { dateRange?: DateRangeType }) => {
          <SummaryCard
           title="Total Transactions"
           value={summaryData?.transactions?.total}
-          percentageChange={summaryData?.transactions?.percentageChange}
+          percentageChange={parsePercentage(summaryData?.transactions?.percentageChange)}
           dateRange={dateRange}
           isLoading={isFetching}
           cardType="other"
@@ -28,7 +31,7 @@ const AdminDashboardStats = ({ dateRange }: { dateRange?: DateRangeType }) => {
         <SummaryCard
           title="Total Income"
           value={summaryData?.income?.total}
-          percentageChange={summaryData?.income?.percentageChange}
+          percentageChange={parsePercentage(summaryData?.income?.percentageChange)}
           dateRange={dateRange}
           isLoading={isFetching}
           cardType="other"
@@ -37,7 +40,7 @@ const AdminDashboardStats = ({ dateRange }: { dateRange?: DateRangeType }) => {
           title="Total Expenses"
           value={summaryData?.expense?.total}
           dateRange={dateRange}
-          percentageChange={summaryData?.expense?.percentageChange}
+          percentageChange={parsePercentage(summaryData?.expense?.percentageChange)}
           isLoading={isFetching}
           cardType="other"
         />

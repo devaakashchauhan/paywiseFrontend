@@ -4,6 +4,7 @@ import DashboardStats from './_components/admin-dashboard-stats'
 import { DateRangeType } from '@/components/date-range-select'
 
 const AdminAnalytics = () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [dateRange, _setDateRange] = useState<DateRangeType>(null);
   
   return (

@@ -185,3 +185,6 @@ const ActionsCell = ({ row }: { row: any }) => {
     </DropdownMenu>
   );
 };
+
+
+export default ActionsCell

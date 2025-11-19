@@ -1,12 +1,13 @@
 import { Separator } from '@/components/ui/separator'
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import DashboardStats from './_components/admin-dashboard-stats'
-import DashboardRecentTransactions from './admin-dashboard-recent-transactions'
+// import DashboardRecentTransactions from './admin-dashboard-recent-transactions'
 import { DateRangeType } from '@/components/date-range-select'
 
 const AdminTransactions = () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [dateRange, _setDateRange] = useState<DateRangeType>(null);
-  
+    
   return (
     <div className="space-y-6">
       <div>
@@ -16,7 +17,7 @@ const AdminTransactions = () => {
         </p>
       </div>
       <Separator />
-      <DashboardStats dateRange={dateRange} />
+      <DashboardStats dateRange={dateRange}  />
       {/* Dashboard Recent Transactions */}
       <div className="w-full mt-0">
         {/* <DashboardRecentTransactions /> */}
